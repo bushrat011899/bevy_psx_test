@@ -1,0 +1,10 @@
+[build]
+# build-stage = 1
+target = ["mipsel-sony-psx"]
+
+[target."mipsel-sony-psx"]
+rustflags = ["-Clink-arg=-Tpsexe.ld", "-Clink-arg=--oformat=binary"]
+
+[unstable]
+build-std = ["core", "alloc"]
+build-std-features = ["compiler-builtins-mem"]

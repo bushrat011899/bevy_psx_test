@@ -1,0 +1,45 @@
+[package]
+name = "jam_psx_test"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+fail = ["dep:bevy_tasks"]
+
+[dependencies]
+# Bevy
+bevy_ptr = { version = "0.16" }
+bevy_platform = { version = "0.16", default-features = false, features = ["alloc"] }
+bevy_utils = { version = "0.16", default-features = false, features = ["alloc"] }
+bevy_math = { version = "0.16", default-features = false, features = ["alloc", "libm"] }
+bevy_tasks = { version = "0.16", default-features = false, optional = true }
+
+[dependencies.psx]
+git = "https://github.com/ayrtonm/psx-sdk-rs"
+rev = "2b6c48e96795af3298c3a43f5c956864063132bc"
+features = [
+  "heap",
+]
+
+[dependencies.portable-atomic]
+version = "1"
+default-features = false
+features = [
+  "fallback",
+  "critical-section",
+]
+
+[dependencies.foldhash]
+git = "https://github.com/bushrat011899/foldhash"
+branch = "portable_atomic"
+default-features = false
+features = ["portable-atomic"]
+
+[dependencies.futures-core]
+version = "0.3"
+default-features = false
+features = ["portable-atomic"]
+
+[patch.crates-io.foldhash]
+git = "https://github.com/bushrat011899/foldhash"
+branch = "portable_atomic"
