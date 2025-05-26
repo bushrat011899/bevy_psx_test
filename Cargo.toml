@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [features]
-fail = ["dep:bevy_tasks"]
 
 [dependencies]
 # Bevy
@@ -12,13 +11,20 @@ bevy_ptr = { version = "0.16" }
 bevy_platform = { version = "0.16", default-features = false, features = ["alloc"] }
 bevy_utils = { version = "0.16", default-features = false, features = ["alloc"] }
 bevy_math = { version = "0.16", default-features = false, features = ["alloc", "libm"] }
-bevy_tasks = { version = "0.16", default-features = false, optional = true }
+bevy_color = { version = "0.16", default-features = false, features = ["alloc", "libm"] }
+bevy_tasks = { version = "0.16", default-features = false }
+bevy_ecs = { version = "0.16", default-features = false }
+bevy_app = { version = "0.16", default-features = false }
+bevy_diagnostic = { version = "0.16", default-features = false }
+
+# Other
+derive_more = { version = "2.0.1", default-features = false, features = ["deref", "deref_mut"] }
 
 [dependencies.psx]
-git = "https://github.com/ayrtonm/psx-sdk-rs"
-rev = "2b6c48e96795af3298c3a43f5c956864063132bc"
+path = "./psx-sdk-rs/psx"
 features = [
   "heap",
+  "critical-section",
 ]
 
 [dependencies.portable-atomic]

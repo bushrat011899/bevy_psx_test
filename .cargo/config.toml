@@ -4,6 +4,7 @@ target = ["mipsel-sony-psx"]
 
 [target."mipsel-sony-psx"]
 rustflags = ["-Clink-arg=-Tpsexe.ld", "-Clink-arg=--oformat=binary"]
+runner = ["pcsx-redux", "-stdout", "-run", "-loadexe"]
 
 [unstable]
 build-std = ["core", "alloc"]

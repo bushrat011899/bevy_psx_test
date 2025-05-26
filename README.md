@@ -8,9 +8,9 @@ Wanna know how not-meant-to-be it is?
 ```sh
 git clone https://github.com/rust-lang/rust.git
 cd rust
-git checkout 3a8e71385940c2f02ec4b23876c0a36fd09bdefe
+git checkout a4cb3c831823d9baa56c3d90514b75b2660116fa
 
-cp config.toml.example config.toml
+cp config.example.toml config.toml
 # Set lld to true
 sed -i 's/#lld = false/lld = true/' config.toml
 # Only build the MIPS and X86 targets
@@ -24,7 +24,6 @@ git apply ../../../llvm_atomic_fence.patch
 
 cd ../..
 
-./x.py build -i library/std
-
+python ./x.py build -i library/std
 rustup toolchain link psx build/x86_64-pc-windows-msvc/stage1
 ```
