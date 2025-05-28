@@ -3,9 +3,21 @@
 target = ["mipsel-sony-psx"]
 
 [target."mipsel-sony-psx"]
-rustflags = ["-Clink-arg=-Tpsexe.ld", "-Clink-arg=--oformat=binary"]
+rustflags = [
+    "-Clink-arg=-Tpsexe.ld",
+    "-Clink-arg=--oformat=binary",
+    # "-Zlocation-detail=none",
+]
 runner = ["pcsx-redux", "-stdout", "-run", "-loadexe"]
 
 [unstable]
-build-std = ["core", "alloc"]
-build-std-features = ["compiler-builtins-mem"]
+build-std = [
+    "core",
+    "alloc",
+    # "panic_abort",
+]
+build-std-features = [
+    "compiler-builtins-mem",
+    "optimize_for_size",
+    # "panic_immediate_abort",
+]

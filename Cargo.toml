@@ -16,9 +16,14 @@ bevy_tasks = { version = "0.16", default-features = false }
 bevy_ecs = { version = "0.16", default-features = false }
 bevy_app = { version = "0.16", default-features = false }
 bevy_diagnostic = { version = "0.16", default-features = false }
+bevy_time = { version = "0.16", default-features = false }
+bevy_transform = { version = "0.16", default-features = false, features = ["bevy-support"] }
+bevy_input = { version = "0.16", default-features = false }
+bevy_state = { version = "0.16", default-features = false, features = ["bevy_app"] }
 
 # Other
 derive_more = { version = "2.0.1", default-features = false, features = ["deref", "deref_mut"] }
+log = "0.4.27"
 
 [dependencies.psx]
 path = "./psx-sdk-rs/psx"
@@ -49,3 +54,13 @@ features = ["portable-atomic"]
 [patch.crates-io.foldhash]
 git = "https://github.com/bushrat011899/foldhash"
 branch = "portable_atomic"
+
+[patch.crates-io.bevy_platform]
+path = "../bevy/crates/bevy_platform"
+
+[profile.release]
+opt-level = "s"
+# strip = true
+lto = true
+# panic = 'abort'
+codegen-units = 1
